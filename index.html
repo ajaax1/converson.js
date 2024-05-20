@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de temperatura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-300 h-screen flex justify-center items-center">
+    <div class="p-10 bg-white drop-shadow-md flex flex-col gap-2">
+        <h1>Converta a temperatura</h1>
+        <input id="number" class="border-solid border border-black" type="text">
+        <div>
+            <span class="text-xs">Celsius para Fahrenheit</span>
+            <input type="radio" class="opcao" name="temperatura" value="opcao" checked>
+        </div>
+        <div>
+            <span class="text-xs">Fahrenheit para Celsius</span>
+            <input type="radio" class="opcao" name="temperatura" value="opcao1">
+        </div>
+        <button id="button" class="border-solid border border-black bg-slate-200">Converter</button>
+        <h1 id="resultado"></h1>
+    </div>
+</body>
+</html>
+<script>
+    let number = document.getElementById('number');
+    let button = document.getElementById('button');
+    let opcao =  document.getElementsByClassName('opcao');
+    let resultado = document.getElementById('resultado')
+        button.addEventListener('click', () => {
+            if(!isNaN(Number(number.value)) && Number(number.value) !== 0){
+                if(opcao[0].checked){
+                    resultado.innerText = number.value * 1.8 + 32;
+                }else{
+                    resultado.innerText = (number.value - 32) / 1.8 ;
+                }
+            }   
+        })
+</script>
